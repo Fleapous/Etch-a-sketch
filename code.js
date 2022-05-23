@@ -14,6 +14,7 @@ function canvasCreator(size){
         canvasPiece.classList.add('piece');
         canvasPiece.style.width = `${pieceSize}px`;
         canvasPiece.style.height = `${pieceSize}px`;
+        canvasPiece.style.background = `#${Math.floor(Math.random()*16777215).toString(16)}`;
         canvas.appendChild(canvasPiece);
     }
 }
