@@ -1,6 +1,7 @@
 
 function canvasCreator(size){
     let canvas = document.querySelector('.canvas')
+    let pieceSize = 500 / size
 
     /*removing the old canvas */
     while (canvas.firstChild){
@@ -11,6 +12,8 @@ function canvasCreator(size){
     for (let i = 0; i < size * size; i++){
         let canvasPiece = document.createElement('div')
         canvasPiece.classList.add('piece');
+        canvasPiece.style.width = `${pieceSize}px`;
+        canvasPiece.style.height = `${pieceSize}px`;
         canvas.appendChild(canvasPiece);
     }
 }
