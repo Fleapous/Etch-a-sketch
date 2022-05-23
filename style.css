@@ -21,6 +21,9 @@ h1{
 }
 
 .canvas{
+    display: flex;
+    flex-wrap: wrap;
+
     border: 2px solid gray;
     height: 500px;
     width: 500px;
@@ -32,4 +35,12 @@ h1{
     border: 2px solid gray;
     height: 20px;
     width: 20px;
+}
+
+.piece{
+    align-self: flex-start;
+    height: 20px;
+    width: 20px;
+    border: 2px solid gray;
+    flex: 1 1 auto;
 }
