@@ -4,6 +4,54 @@ let rainbowDown;
 let eraserDOwn;
 let clearDown;
 
+/* bindings */
+let canvas = document.querySelector('.canvas');
+let monoColor = document.querySelector('#black');
+let Rainbow = document.querySelector('#rainbow');
+let Eraser = document.querySelector('#eraser');
+let value = document.createElement('div');
+let control = document.querySelector('.controls');
+
+/* event listeners */
+canvas.addEventListener('mousedown', function (){
+    isDown = true;
+    console.log('true');
+    drawing();
+});
+canvas.addEventListener('mouseup', function (){
+    isDown = false;
+    console.log('false');
+    drawing();
+});
+
+
+monoColor.addEventListener('click', function (){
+    classicDown = !classicDown;
+    rainbowDown = false;
+    eraserDOwn = false;
+});
+Rainbow.addEventListener('click', function (){
+    rainbowDown = !rainbowDown;
+    classicDown = false;
+    eraserDOwn = false;
+});
+
+Eraser.addEventListener('click', function (){
+    eraserDOwn = !eraserDOwn;
+    rainbowDown = false;
+    classicDown = false;
+});
+
+/* slider value display */
+
+let slider = document.querySelector('#canvas-size');
+slider.addEventListener('input', function (){
+    value.textContent = this.value;
+    control.appendChild(value);
+    canvasCreator(this.value)
+})
+
+/* functions */
 function paint(){
 
     let piece = document.querySelectorAll('.piece');
@@ -49,50 +97,6 @@ function drawing(){
         }
     }
 }
-
-let canvas = document.querySelector('.canvas');
-canvas.addEventListener('mousedown', function (){
-    isDown = true;
-    console.log('true');
-    drawing();
-});
-canvas.addEventListener('mouseup', function (){
-    isDown = false;
-    console.log('false');
-    drawing();
-});
-
-let monoColor = document.querySelector('#black');
-let Rainbow = document.querySelector('#rainbow');
-let Eraser = document.querySelector('#eraser');
-
-monoColor.addEventListener('click', function (){
-    classicDown = !classicDown;
-    rainbowDown = false;
-    eraserDOwn = false;
-});
-Rainbow.addEventListener('click', function (){
-    rainbowDown = !rainbowDown;
-    classicDown = false;
-    eraserDOwn = false;
-});
-
-Eraser.addEventListener('click', function (){
-    eraserDOwn = !eraserDOwn;
-    rainbowDown = false;
-    classicDown = false;
-});
-
-/* slider value display */
-let value = document.createElement('div');
-let control = document.querySelector('.controls');
-
-let slider = document.querySelector('#canvas-size');
-slider.addEventListener('input', function (){
-    value.textContent = this.value;
-    control.appendChild(value);
-    canvasCreator(this.value)
-})
 
 /* for testing the canvas responsivnes */
 let test = document.getElementById('test');
