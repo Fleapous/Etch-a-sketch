@@ -1,3 +1,5 @@
+let isdown;
+
 
 function canvasCreator(size){
     let canvas = document.querySelector('.canvas')
@@ -16,6 +18,7 @@ function canvasCreator(size){
         canvasPiece.style.height = `${pieceSize}px`;
         canvasPiece.style.background = `#${Math.floor(Math.random()*16777215).toString(16)}`;
         canvas.appendChild(canvasPiece);
+        paint();
     }
 }
 
@@ -29,5 +32,36 @@ slider.addEventListener('input', function (){
     canvasCreator(this.value)
 })
 
+function paint(){
 
+    let piece = document.querySelectorAll('.piece');
+    piece.forEach(function (elem){
+        elem.addEventListener('mouseenter', function (){
+            console.log('anan');
+        });
+    });
+
+}
+
+function drawing(){
+    let color;
+
+    let isDown;
+    let classic;
+    let rainbow;
+
+    if (isDown === true){
+        if (classic === true){
+            paint();
+        }
+        else if (rainbow ===  true){
+
+        }
+    }
+}
+
+let test = document.getElementById('test');
+test.addEventListener('mouseenter', function (){
+    console.log('test triggered');
+})
 

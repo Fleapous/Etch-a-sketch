@@ -2,24 +2,6 @@ h1{
     text-align: center;
 }
 
-.container{
-/*    display: flex;
-    border: 2px solid gray;
-    height: 600px;*/
-}
-
-.controls{
-/*    display: flex;
-    flex-direction: column;
-    border: 2px solid cornflowerblue;
-    width: 200px;
-    justify-content: space-evenly;*/
-}
-
-.button, .slider{
-/*    padding: 5px;*/
-}
-
 .canvas{
     display: flex;
     flex-wrap: wrap;
@@ -29,13 +11,12 @@ h1{
     width: 500px;
 }
 
-/*.try{
-    border: 2px solid gray;
+.button{
+
+}
+
+#test{
     height: 20px;
     width: 20px;
-}*/
-
-.piece{
-/*    border: 2px solid gray;*/
-/*    background: green;*/
+    border: 2px solid black;
 }
