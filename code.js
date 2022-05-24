@@ -1,5 +1,20 @@
-let isdown;
+let isDown;
+let classicDown;
+let rainbowDown;
+let eraserDOwn;
+let clearDown;
 
+function paint(){
+
+    let piece = document.querySelectorAll('.piece');
+    piece.forEach(function (elem){
+        elem.addEventListener('mouseenter', function (){
+            console.log('anan');
+            this.style.background = 'black';
+        });
+    });
+
+}
 
 function canvasCreator(size){
     let canvas = document.querySelector('.canvas')
@@ -16,12 +31,59 @@ function canvasCreator(size){
         canvasPiece.classList.add('piece');
         canvasPiece.style.width = `${pieceSize}px`;
         canvasPiece.style.height = `${pieceSize}px`;
-        canvasPiece.style.background = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        /*canvasPiece.style.background = `#${Math.floor(Math.random()*16777215).toString(16)}`;*/
         canvas.appendChild(canvasPiece);
-        paint();
+
+    }
+
+}
+
+function drawing(){
+    let color;
+    if (isDown === true){
+        if (classicDown === true){
+            paint();
+        }
+        else if (rainbowDown ===  true){
+
+        }
     }
 }
 
+let canvas = document.querySelector('.canvas');
+canvas.addEventListener('mousedown', function (){
+    isDown = true;
+    console.log('true');
+    drawing();
+});
+canvas.addEventListener('mouseup', function (){
+    isDown = false;
+    console.log('false');
+    drawing();
+});
+
+let monoColor = document.querySelector('#black');
+let Rainbow = document.querySelector('#rainbow');
+let Eraser = document.querySelector('#eraser');
+
+monoColor.addEventListener('click', function (){
+    classicDown = !classicDown;
+    rainbowDown = false;
+    eraserDOwn = false;
+});
+Rainbow.addEventListener('click', function (){
+    rainbowDown = !rainbowDown;
+    classicDown = false;
+    eraserDOwn = false;
+});
+
+Eraser.addEventListener('click', function (){
+    eraserDOwn = !eraserDOwn;
+    rainbowDown = false;
+    classicDown = false;
+});
+
+/* slider value display */
 let value = document.createElement('div');
 let control = document.querySelector('.controls');
 
@@ -32,34 +94,7 @@ slider.addEventListener('input', function (){
     canvasCreator(this.value)
 })
 
-function paint(){
-
-    let piece = document.querySelectorAll('.piece');
-    piece.forEach(function (elem){
-        elem.addEventListener('mouseenter', function (){
-            console.log('anan');
-        });
-    });
-
-}
-
-function drawing(){
-    let color;
-
-    let isDown;
-    let classic;
-    let rainbow;
-
-    if (isDown === true){
-        if (classic === true){
-            paint();
-        }
-        else if (rainbow ===  true){
-
-        }
-    }
-}
-
+/* for testing the canvas responsivnes */
 let test = document.getElementById('test');
 test.addEventListener('mouseenter', function (){
     console.log('test triggered');
