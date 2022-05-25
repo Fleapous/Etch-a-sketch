@@ -10,6 +10,7 @@ let monoColor = document.querySelector('#black');
 let Rainbow = document.querySelector('#rainbow');
 let Eraser = document.querySelector('#eraser');
 let value = document.createElement('div');
+let Clear = document.querySelector('#clear');
 let control = document.querySelector('.controls');
 
 /* event listeners */
@@ -41,6 +42,10 @@ Eraser.addEventListener('click', function (){
     classicDown = false;
 });
 
+Clear.addEventListener('click', function (){
+    canvasCreator(slider.value);
+});
+
 /* slider value display */
 
 let slider = document.querySelector('#canvas-size');
@@ -52,9 +57,7 @@ slider.addEventListener('input', function (){
 
 function draw(color, elem) {
     if (isDown === true) {
-        if (classicDown === true) {
-            elem.style.background = `${color}`;
-        }
+        elem.style.background = `${color}`;
     }
 }
 
@@ -63,7 +66,15 @@ function paint(){
     let piece = document.querySelectorAll('.piece');
     piece.forEach(function (elem){
         elem.addEventListener('mouseenter', function (){
-            draw('black', this);
+            if (classicDown){
+                draw('black', this);
+            }
+            else if (rainbowDown){
+                draw(`#${Math.floor(Math.random()*16777215).toString(16)}`, this);
+            }
+            else if (eraserDOwn){
+                draw('white', this)
+            }
         });
     });
 }
@@ -77,7 +88,7 @@ function canvasCreator(size){
         canvas.removeChild(canvas.firstChild);
     }
 
-    /* Creating the new colors */
+    /* Creating the new canvas */
     for (let i = 0; i < size * size; i++){
         let canvasPiece = document.createElement('div')
         canvasPiece.classList.add('piece');
