@@ -16,12 +16,11 @@ let control = document.querySelector('.controls');
 canvas.addEventListener('mousedown', function (){
     isDown = true;
     console.log('true');
-    drawing();
+    paint();
 });
 canvas.addEventListener('mouseup', function (){
     isDown = false;
     console.log('false');
-    drawing();
 });
 
 
@@ -51,17 +50,22 @@ slider.addEventListener('input', function (){
     canvasCreator(this.value)
 })
 
+function draw(color, elem) {
+    if (isDown === true) {
+        if (classicDown === true) {
+            elem.style.background = `${color}`;
+        }
+    }
+}
+
 /* functions */
 function paint(){
-
     let piece = document.querySelectorAll('.piece');
     piece.forEach(function (elem){
         elem.addEventListener('mouseenter', function (){
-            console.log('anan');
-            this.style.background = 'black';
+            draw('black', this);
         });
     });
-
 }
 
 function canvasCreator(size){
@@ -86,19 +90,7 @@ function canvasCreator(size){
 
 }
 
-function drawing(){
-    let color;
-    if (isDown === true){
-        if (classicDown === true){
-            paint();
-        }
-        else if (rainbowDown ===  true){
-
-        }
-    }
-}
-
-/* for testing the canvas responsivnes */
+/* for testing the canvas responsiveness */
 let test = document.getElementById('test');
 test.addEventListener('mouseenter', function (){
     console.log('test triggered');
