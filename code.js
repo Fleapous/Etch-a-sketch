@@ -6,6 +6,7 @@ let clearDown;
 
 /* bindings */
 let canvas = document.querySelector('.canvas');
+let canvasHeight = document.querySelector('.canvas').clientHeight;
 let monoColor = document.querySelector('#black');
 let Rainbow = document.querySelector('#rainbow');
 let Eraser = document.querySelector('#eraser');
@@ -23,7 +24,6 @@ canvas.addEventListener('mouseup', function (){
     isDown = false;
     console.log('false');
 });
-
 
 monoColor.addEventListener('click', function (){
     classicDown = !classicDown;
@@ -81,7 +81,7 @@ function paint(){
 
 function canvasCreator(size){
     let canvas = document.querySelector('.canvas')
-    let pieceSize = 500 / size
+    let pieceSize = canvasHeight / size
 
     /*removing the old canvas */
     while (canvas.firstChild){
